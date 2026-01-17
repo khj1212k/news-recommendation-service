@@ -1,0 +1,9 @@
+sqlalchemy==2.0.29
+psycopg2-binary==2.9.9
+pgvector==0.2.5
+scikit-learn==1.4.1.post1
+numpy==1.26.4
+langdetect==1.0.9
+rapidfuzz==3.6.2
+beautifulsoup4==4.12.3
+python-dateutil==2.9.0.post0

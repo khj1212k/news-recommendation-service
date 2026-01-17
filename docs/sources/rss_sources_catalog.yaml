@@ -1,0 +1,169 @@
+news_sources:
+  - name: chosun
+    display_name: "조선일보(조선닷컴)"
+    list_page: "https://rssplus.chosun.com/"
+    feeds:
+      - key: all
+        url: "https://www.chosun.com/arc/outboundfeeds/rss/?outputType=xml"
+      - key: politics
+        url: "https://www.chosun.com/arc/outboundfeeds/rss/category/politics/?outputType=xml"
+      - key: economy
+        url: "https://www.chosun.com/arc/outboundfeeds/rss/category/economy/?outputType=xml"
+      - key: society
+        url: "https://www.chosun.com/arc/outboundfeeds/rss/category/national/?outputType=xml"
+      - key: international
+        url: "https://www.chosun.com/arc/outboundfeeds/rss/category/international/?outputType=xml"
+      - key: culture_life
+        url: "https://www.chosun.com/arc/outboundfeeds/rss/category/culture-life/?outputType=xml"
+      - key: opinion
+        url: "https://www.chosun.com/arc/outboundfeeds/rss/category/opinion/?outputType=xml"
+      - key: sports
+        url: "https://www.chosun.com/arc/outboundfeeds/rss/category/sports/?outputType=xml"
+      - key: entertainment
+        url: "https://www.chosun.com/arc/outboundfeeds/rss/category/entertainments/?outputType=xml"
+      - key: english
+        url: "https://english.chosun.com/site/data/rss/rss.xml"
+    notes:
+      - "공식 안내: 개인적 구독(비상업) 용도 중심"
+
+  - name: donga
+    display_name: "동아일보(동아닷컴)"
+    list_page: "https://rss.donga.com/"
+    feeds:
+      - { key: all, url: "https://rss.donga.com/total.xml" }
+      - { key: politics, url: "https://rss.donga.com/politics.xml" }
+      - { key: society, url: "https://rss.donga.com/national.xml" }
+      - { key: economy, url: "https://rss.donga.com/economy.xml" }
+      - { key: international, url: "https://rss.donga.com/international.xml" }
+      - { key: editorials, url: "https://rss.donga.com/editorials.xml" }
+      - { key: science, url: "https://rss.donga.com/science.xml" }
+      - { key: culture_ent, url: "https://rss.donga.com/culture.xml" }
+      - { key: sports, url: "https://rss.donga.com/sports.xml" }
+      - { key: people, url: "https://rss.donga.com/inmul.xml" }
+      - { key: health, url: "https://rss.donga.com/health.xml" }
+      - { key: leisure, url: "https://rss.donga.com/leisure.xml" }
+      - { key: book, url: "https://rss.donga.com/book.xml" }
+      - { key: show, url: "https://rss.donga.com/show.xml" }
+      - { key: woman, url: "https://rss.donga.com/woman.xml" }
+      - { key: travel, url: "https://rss.donga.com/travel.xml" }
+      - { key: lifeinfo, url: "https://rss.donga.com/lifeinfo.xml" }
+    notes:
+      - "공식 안내: 개인 비상업 사용만 허용"
+      - "페이지 하단에 'AI학습 이용 금지' 문구가 표시됨(정책 준수 필요)"
+
+  - name: khan
+    display_name: "경향신문"
+    list_page: "https://www.khan.co.kr/help/help_rss.html"
+    feeds:
+      - { key: all, url: "https://www.khan.co.kr/rss/rssdata/total_news.xml" }
+      - { key: cartoon, url: "https://www.khan.co.kr/rss/rssdata/cartoon_news.xml" }
+      - { key: opinion, url: "https://www.khan.co.kr/rss/rssdata/opinion_news.xml" }
+      - { key: politics, url: "https://www.khan.co.kr/rss/rssdata/politic_news.xml" }
+      - { key: economy, url: "https://www.khan.co.kr/rss/rssdata/economy_news.xml" }
+      - { key: society, url: "https://www.khan.co.kr/rss/rssdata/society_news.xml" }
+      - { key: local, url: "https://www.khan.co.kr/rss/rssdata/local_news.xml" }
+      - { key: world, url: "https://www.khan.co.kr/rss/rssdata/kh_world.xml" }
+      - { key: culture, url: "https://www.khan.co.kr/rss/rssdata/culture_news.xml" }
+      - { key: sports, url: "http://www.khan.co.kr/rss/rssdata/kh_sports.xml" }
+      - { key: science_env, url: "https://www.khan.co.kr/rss/rssdata/science_news.xml" }
+      - { key: life, url: "http://www.khan.co.kr/rss/rssdata/life_news.xml" }
+      - { key: people, url: "https://www.khan.co.kr/rss/rssdata/people_news.xml" }
+      - { key: english, url: "https://www.khan.co.kr/rss/rssdata/english_news.xml" }
+      - { key: newsletter, url: "https://www.khan.co.kr/rss/rssdata/newsletter_news.xml" }
+      - { key: interactive, url: "https://www.khan.co.kr/rss/rssdata/interactive_news.xml" }
+    notes:
+      - "공식 안내: 개인적 구독 목적, 다수 공유/영리 이용은 저작권자 허락 필요"
+
+  - name: mk
+    display_name: "매일경제(MK)"
+    list_page: "https://www.mk.co.kr/rss"
+    feeds:
+      - { key: headlines, url: "https://www.mk.co.kr/rss/30000001/" }
+      - { key: all, url: "https://www.mk.co.kr/rss/40300001/" }
+      - { key: economy, url: "https://www.mk.co.kr/rss/30100041/" }
+      - { key: politics, url: "https://www.mk.co.kr/rss/30200030/" }
+      - { key: society, url: "https://www.mk.co.kr/rss/50400012/" }
+      - { key: international, url: "https://www.mk.co.kr/rss/30300018/" }
+      - { key: business, url: "https://www.mk.co.kr/rss/50100032/" }
+      - { key: stock, url: "https://www.mk.co.kr/rss/50200011/" }
+      - { key: realestate, url: "https://www.mk.co.kr/rss/50300009/" }
+      - { key: culture_ent, url: "https://www.mk.co.kr/rss/30000023/" }
+      - { key: sports, url: "https://www.mk.co.kr/rss/71000001/" }
+      - { key: game, url: "https://www.mk.co.kr/rss/50700001/" }
+      - { key: special_mba, url: "https://www.mk.co.kr/rss/40200124/" }
+      - { key: special_money_riches, url: "https://www.mk.co.kr/rss/40200003/" }
+      - { key: english_top_stories, url: "https://www.mk.co.kr/rss/30800011/" }
+      - { key: economy_mag_all, url: "https://www.mk.co.kr/rss/50000001/" }
+      - { key: citylife_all, url: "https://www.mk.co.kr/rss/60000007/" }
+
+  - name: hankyung
+    display_name: "한국경제(한경)"
+    list_page: "https://www.hankyung.com/feed"
+    feeds:
+      - { key: all, url: "https://www.hankyung.com/feed/all-news" }
+      - { key: finance, url: "https://www.hankyung.com/feed/finance" }
+      - { key: economy, url: "https://www.hankyung.com/feed/economy" }
+      - { key: realestate, url: "https://www.hankyung.com/feed/realestate" }
+      - { key: it, url: "https://www.hankyung.com/feed/it" }
+      - { key: politics, url: "https://www.hankyung.com/feed/politics" }
+      - { key: international, url: "https://www.hankyung.com/feed/international" }
+      - { key: society, url: "https://www.hankyung.com/feed/society" }
+      - { key: life, url: "https://www.hankyung.com/feed/life" }
+      - { key: opinion, url: "https://www.hankyung.com/feed/opinion" }
+      - { key: sports, url: "https://www.hankyung.com/feed/sports" }
+      - { key: entertainment, url: "https://www.hankyung.com/feed/entertainment" }
+      - { key: video, url: "https://www.hankyung.com/feed/video" }
+
+  - name: segye
+    display_name: "세계일보"
+    list_page: "https://www.segye.com/rssInfo"
+    feeds:
+      - { key: all, url: "https://www.segye.com/Articles/RSSList/segye_recent.xml" }
+      - { key: politics, url: "https://www.segye.com/Articles/RSSList/segye_politic.xml" }
+      - { key: economy, url: "https://www.segye.com/Articles/RSSList/segye_economy.xml" }
+      - { key: society, url: "https://www.segye.com/Articles/RSSList/segye_society.xml" }
+      - { key: international, url: "https://www.segye.com/Articles/RSSList/segye_international.xml" }
+      - { key: local, url: "https://www.segye.com/Articles/RSSList/segye_local.xml" }
+      - { key: culture, url: "https://www.segye.com/Articles/RSSList/segye_culture.xml" }
+      - { key: opinion, url: "https://www.segye.com/Articles/RSSList/segye_opinion.xml" }
+      - { key: entertainment, url: "https://www.segye.com/Articles/RSSList/segye_entertainment.xml" }
+      - { key: sports, url: "https://www.segye.com/Articles/RSSList/segye_sports.xml" }
+      - { key: photo, url: "https://www.segye.com/Articles/RSSList/segye_photo.xml" }
+      - { key: sportsworld_all, url: "https://www.sportsworldi.com/Articles/RSSList/sw_recent.xml" }
+      - { key: sportsworld_sports, url: "https://www.sportsworldi.com/Articles/RSSList/sw_sports.xml" }
+
+  - name: hani
+    display_name: "한겨레"
+    list_page: "https://www.hani.co.kr/rss/ (또는 /arti/RSS 안내 페이지가 있을 수 있으나 접근 제한 가능)"
+    feeds:
+      - { key: all, url: "https://www.hani.co.kr/rss/" }
+      - { key: politics, url: "https://www.hani.co.kr/rss/politics/" }
+      - { key: economy, url: "https://www.hani.co.kr/rss/economy/" }
+      - { key: society, url: "https://www.hani.co.kr/rss/society/" }
+      - { key: international, url: "https://www.hani.co.kr/rss/international/" }
+      - { key: culture, url: "https://www.hani.co.kr/rss/culture/" }
+      - { key: opinion, url: "https://www.hani.co.kr/rss/opinion/" }
+      - { key: cartoon, url: "https://www.hani.co.kr/rss/cartoon/" }
+      - { key: english_edition, url: "https://www.hani.co.kr/rss/english_edition/" }
+      - { key: specialsection, url: "https://www.hani.co.kr/rss/specialsection/" }
+      - { key: education, url: "https://www.hani.co.kr/rss/education/" }
+      - { key: saturday, url: "https://www.hani.co.kr/rss/saturday/" }
+      - { key: hanionly, url: "https://www.hani.co.kr/rss/hanionly/" }
+    notes:
+      - "일부 안내 페이지는 403 등 접근 제한 가능. 수집 시 HTTP 상태/리트라이/백오프 필요."
+
+  - name: kmib
+    display_name: "국민일보(KMIB)"
+    list_page: "(공식 RSS 안내 페이지가 있으나 인코딩/접근 이슈 가능)"
+    feeds:
+      - { key: all, url: "https://www.kmib.co.kr/rss/data/kmibRssAll.xml" }
+      - { key: politics, url: "https://www.kmib.co.kr/rss/data/kmibPolRss.xml" }
+      - { key: economy, url: "https://www.kmib.co.kr/rss/data/kmibEcoRss.xml" }
+      - { key: society, url: "https://www.kmib.co.kr/rss/data/kmibSocRss.xml" }
+      - { key: international, url: "https://www.kmib.co.kr/rss/data/kmibIntRss.xml" }
+      - { key: sports, url: "https://www.kmib.co.kr/rss/data/kmibSpoRss.xml" }
+      - { key: culture, url: "https://www.kmib.co.kr/rss/data/kmibCulRss.xml" }
+      - { key: life, url: "https://www.kmib.co.kr/rss/data/kmibLifeRss.xml" }
+      - { key: column, url: "https://www.kmib.co.kr/rss/data/kmibColRss.xml" }
+    notes:
+      - "목록 페이지 파싱이 어려우면, 위 엔드포인트를 직접 호출해 유효성(200/콘텐츠)부터 점검"

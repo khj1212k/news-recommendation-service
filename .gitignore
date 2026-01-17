@@ -1,0 +1,23 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.env
+.venv/
+node_modules/
+.next/
+
+# Airflow
+logs/
+
+# Python
+*.egg-info/
+dist/
+ml/artifacts/
+.coverage
+.mypy_cache/
+.ruff_cache/
+
+# OS
+.DS_Store

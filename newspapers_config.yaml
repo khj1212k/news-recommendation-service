@@ -1,0 +1,51 @@
+# 신문사별 RSS 피드 및 본문 추출 설정
+# validate_newspapers.py에서 사용
+
+newspapers:
+  조선일보:
+    rss: "https://www.chosun.com/arc/outboundfeeds/rss/?outputType=xml"
+    selectors:
+      - '<div[^>]*class="[^"]*article-body[^"]*"[^>]*>(.*?)</div>'
+      - "<article[^>]*>(.*?)</article>"
+
+  동아일보:
+    rss: "https://rss.donga.com/total.xml"
+    selectors:
+      - '<div[^>]*class="[^"]*article_txt[^"]*"[^>]*>(.*?)</div>'
+      - '<div[^>]*id="contents"[^>]*>(.*?)</div>'
+
+  경향신문:
+    rss: "https://www.khan.co.kr/rss/rssdata/total_news.xml"
+    selectors:
+      - '<div[^>]*id="articleBody"[^>]*>(.*?)</div>'
+      - '<div[^>]*class="[^"]*art_body[^"]*"[^>]*>(.*?)</div>'
+
+  매일경제:
+    rss: "https://www.mk.co.kr/rss/40300001/"
+    selectors:
+      - '<div[^>]*class="[^"]*news_cnt_detail_wrap[^"]*"[^>]*>(.*?)</div>'
+      - '<p[^>]*class="[^"]*desc[^"]*"[^>]*>(.*?)</p>'
+
+  한국경제:
+    rss: "https://www.hankyung.com/feed/all-news"
+    selectors:
+      - '<div[^>]*id="articletxt"[^>]*>(.*?)</div>'
+      - '<div[^>]*class="[^"]*article-body[^"]*"[^>]*>(.*?)</div>'
+
+  세계일보:
+    rss: "https://www.segye.com/Articles/RSSList/segye_recent.xml"
+    selectors:
+      - '<article[^>]*class="[^"]*article-body[^"]*"[^>]*>(.*?)</article>'
+      - '<div[^>]*class="[^"]*article_view[^"]*"[^>]*>(.*?)</div>'
+
+  한겨레:
+    rss: "https://www.hani.co.kr/rss/"
+    selectors:
+      - '<div[^>]*class="[^"]*article-text[^"]*"[^>]*>(.*?)</div>'
+      - '<div[^>]*class="[^"]*text[^"]*"[^>]*>(.*?)</div>'
+
+  국민일보:
+    rss: "https://www.kmib.co.kr/rss/data/kmibRssAll.xml"
+    selectors:
+      - '<div[^>]*id="articleBody"[^>]*>(.*?)</div>'
+      - '<div[^>]*class="[^"]*tx[^"]*"[^>]*>(.*?)</div>'

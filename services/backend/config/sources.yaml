@@ -1,0 +1,137 @@
+sources:
+  # ===== 기존 정책브리핑 소스 (공공누리) =====
+  - name: "정책브리핑-정책뉴스"
+    adapter: "rss"
+    rss_url: "https://www.korea.kr/rss/policy.xml"
+    base_url: "https://www.korea.kr"
+    terms_url: "https://www.korea.kr/guide/copyRight.do"
+    allow_fulltext: true
+    allow_derivatives: true
+    category: "정치"
+    language: "ko"
+    enabled: true
+    max_items: 50
+    license_required_patterns:
+      - "open_type01"
+      - "공공누리"
+
+  - name: "정책브리핑-보도자료"
+    adapter: "rss"
+    rss_url: "https://www.korea.kr/rss/pressrelease.xml"
+    base_url: "https://www.korea.kr"
+    terms_url: "https://www.korea.kr/guide/copyRight.do"
+    allow_fulltext: true
+    allow_derivatives: true
+    category: "사회"
+    language: "ko"
+    enabled: true
+    max_items: 50
+    license_required_patterns:
+      - "open_type01"
+      - "공공누리"
+
+  # ===== 신문사 소스 (학습용 - 비상업적 이용) =====
+
+  # 동아일보
+  - name: "동아일보-전체"
+    adapter: "newspaper"
+    rss_url: "https://rss.donga.com/total.xml"
+    base_url: "https://www.donga.com"
+    terms_url: "https://rss.donga.com/"
+    allow_fulltext: true
+    allow_derivatives: true
+    category: "종합"
+    language: "ko"
+    enabled: true
+    max_items: 30
+
+  # 경향신문
+  - name: "경향신문-전체"
+    adapter: "newspaper"
+    rss_url: "https://www.khan.co.kr/rss/rssdata/total_news.xml"
+    base_url: "https://www.khan.co.kr"
+    terms_url: "https://www.khan.co.kr/help/help_rss.html"
+    allow_fulltext: true
+    allow_derivatives: true
+    category: "종합"
+    language: "ko"
+    enabled: true
+    max_items: 30
+
+  # 매일경제
+  - name: "매일경제-전체"
+    adapter: "newspaper"
+    rss_url: "https://www.mk.co.kr/rss/40300001/"
+    base_url: "https://www.mk.co.kr"
+    terms_url: "https://www.mk.co.kr/rss"
+    allow_fulltext: true
+    allow_derivatives: true
+    category: "경제"
+    language: "ko"
+    enabled: true
+    max_items: 30
+
+  # 한국경제
+  - name: "한국경제-전체"
+    adapter: "newspaper"
+    rss_url: "https://www.hankyung.com/feed/all-news"
+    base_url: "https://www.hankyung.com"
+    terms_url: "https://www.hankyung.com/feed"
+    allow_fulltext: true
+    allow_derivatives: true
+    category: "경제"
+    language: "ko"
+    enabled: true
+    max_items: 30
+
+  # 세계일보
+  - name: "세계일보-전체"
+    adapter: "newspaper"
+    rss_url: "https://www.segye.com/Articles/RSSList/segye_recent.xml"
+    base_url: "https://www.segye.com"
+    terms_url: "https://www.segye.com/rssInfo"
+    allow_fulltext: true
+    allow_derivatives: true
+    category: "종합"
+    language: "ko"
+    enabled: true
+    max_items: 20
+
+  # 국민일보
+  - name: "국민일보-전체"
+    adapter: "newspaper"
+    rss_url: "https://www.kmib.co.kr/rss/data/kmibRssAll.xml"
+    base_url: "https://www.kmib.co.kr"
+    terms_url: "https://www.kmib.co.kr"
+    allow_fulltext: true
+    allow_derivatives: true
+    category: "종합"
+    language: "ko"
+    enabled: true
+    max_items: 20
+
+  # 머니투데이 (조선일보 대체)
+  - name: "머니투데이-전체"
+    adapter: "newspaper"
+    rss_url: "https://rss.mt.co.kr/mt_news.xml"
+    base_url: "https://news.mt.co.kr"
+    terms_url: "https://www.mt.co.kr"
+    allow_fulltext: true
+    allow_derivatives: true
+    category: "경제"
+    language: "ko"
+    enabled: true
+    max_items: 30
+
+  # 오마이뉴스 (한겨레 대체)
+  - name: "오마이뉴스-전체"
+    adapter: "newspaper"
+    rss_url: "http://rss.ohmynews.com/rss/ohmynews.xml"
+    base_url: "http://www.ohmynews.com"
+    terms_url: "http://www.ohmynews.com"
+    allow_fulltext: true
+    allow_derivatives: true
+    category: "종합"
+    language: "ko"
+    enabled: true
+    max_items: 30

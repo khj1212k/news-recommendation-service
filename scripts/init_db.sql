@@ -1,0 +1,3 @@
+CREATE DATABASE airflow;
+\connect news
+CREATE EXTENSION IF NOT EXISTS vector;

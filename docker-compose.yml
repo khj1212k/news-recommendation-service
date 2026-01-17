@@ -1,0 +1,123 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg15
+    container_name: news_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-news}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-news_password}
+      POSTGRES_DB: ${POSTGRES_DB:-news}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./scripts/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql:ro
+
+  backend:
+    build:
+      context: ./services/backend
+    container_name: news_backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg2://news:news_password@postgres:5432/news}
+      SECRET_KEY: ${SECRET_KEY:-change_me_to_a_long_random_string}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-120}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+      TIMEZONE: ${TIMEZONE:-Asia/Seoul}
+      NEWS_SOURCES_FILE: ${NEWS_SOURCES_FILE:-config/sources.yaml}
+      NEWS_REQUEST_TIMEOUT: ${NEWS_REQUEST_TIMEOUT:-10}
+      NEWS_USER_AGENT: ${NEWS_USER_AGENT:-NewsPipeline/1.0}
+      NEWS_MAX_ITEMS_PER_SOURCE: ${NEWS_MAX_ITEMS_PER_SOURCE:-120}
+      EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-sentence-transformers}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-intfloat/multilingual-e5-small}
+      EMBEDDING_DIM: ${EMBEDDING_DIM:-384}
+      LLM_PROVIDER: ${LLM_PROVIDER:-openai}
+      LLM_MODEL: ${LLM_MODEL:-gpt-4o-mini}
+      LLM_TEMPERATURE: ${LLM_TEMPERATURE:-0.2}
+      LLM_MAX_TOKENS: ${LLM_MAX_TOKENS:-1200}
+      MOCK_LLM: ${MOCK_LLM:-false}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      RANKER_MODEL_PATH: ${RANKER_MODEL_PATH:-ml/artifacts/ranker.pkl}
+      RANKER_META_PATH: ${RANKER_META_PATH:-ml/artifacts/ranker_meta.json}
+      TOPIC_SIMILARITY_THRESHOLD: ${TOPIC_SIMILARITY_THRESHOLD:-0.78}
+      TOPIC_MERGE_THRESHOLD: ${TOPIC_MERGE_THRESHOLD:-0.86}
+      TOPIC_TIME_WINDOW_DAYS: ${TOPIC_TIME_WINDOW_DAYS:-7}
+      DEDUP_NEAR_THRESHOLD: ${DEDUP_NEAR_THRESHOLD:-0.92}
+      NEWSLETTER_MIN_BULLETS: ${NEWSLETTER_MIN_BULLETS:-5}
+      NEWSLETTER_MAX_BULLETS: ${NEWSLETTER_MAX_BULLETS:-10}
+      MMR_LAMBDA: ${MMR_LAMBDA:-0.8}
+      MMR_MAX_CANDIDATES: ${MMR_MAX_CANDIDATES:-120}
+      USER_EMBEDDING_DECAY_HOURS: ${USER_EMBEDDING_DECAY_HOURS:-72}
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    depends_on:
+      - postgres
+    volumes:
+      - ./services/backend:/app
+      - ./ml:/app/ml
+
+  frontend:
+    build:
+      context: ./services/frontend
+    container_name: news_frontend
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://localhost:8000}
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      - backend
+
+  airflow:
+    build:
+      context: .
+      dockerfile: infra/airflow/Dockerfile
+    container_name: news_airflow
+    restart: unless-stopped
+    environment:
+      AIRFLOW__CORE__EXECUTOR: ${AIRFLOW__CORE__EXECUTOR:-LocalExecutor}
+      AIRFLOW__CORE__LOAD_EXAMPLES: ${AIRFLOW__CORE__LOAD_EXAMPLES:-False}
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: ${AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION:-False}
+      AIRFLOW__CORE__DEFAULT_TIMEZONE: ${AIRFLOW__CORE__DEFAULT_TIMEZONE:-Asia/Seoul}
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: ${AIRFLOW__DATABASE__SQL_ALCHEMY_CONN:-postgresql+psycopg2://news:news_password@postgres:5432/airflow}
+      AIRFLOW__WEBSERVER__SECRET_KEY: ${AIRFLOW__WEBSERVER__SECRET_KEY:-airflow_secret_key}
+      PYTHONPATH: /opt/project/services/backend
+      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg2://news:news_password@postgres:5432/news}
+      TIMEZONE: ${TIMEZONE:-Asia/Seoul}
+      NEWS_SOURCES_FILE: ${NEWS_SOURCES_FILE:-config/sources.yaml}
+      NEWS_REQUEST_TIMEOUT: ${NEWS_REQUEST_TIMEOUT:-10}
+      NEWS_USER_AGENT: ${NEWS_USER_AGENT:-NewsPipeline/1.0}
+      NEWS_MAX_ITEMS_PER_SOURCE: ${NEWS_MAX_ITEMS_PER_SOURCE:-120}
+      EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-sentence-transformers}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-intfloat/multilingual-e5-small}
+      EMBEDDING_DIM: ${EMBEDDING_DIM:-384}
+      LLM_PROVIDER: ${LLM_PROVIDER:-openai}
+      LLM_MODEL: ${LLM_MODEL:-gpt-4o-mini}
+      LLM_TEMPERATURE: ${LLM_TEMPERATURE:-0.2}
+      LLM_MAX_TOKENS: ${LLM_MAX_TOKENS:-1200}
+      MOCK_LLM: ${MOCK_LLM:-false}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      RANKER_MODEL_PATH: ${RANKER_MODEL_PATH:-ml/artifacts/ranker.pkl}
+      RANKER_META_PATH: ${RANKER_META_PATH:-ml/artifacts/ranker_meta.json}
+      TOPIC_SIMILARITY_THRESHOLD: ${TOPIC_SIMILARITY_THRESHOLD:-0.78}
+      TOPIC_MERGE_THRESHOLD: ${TOPIC_MERGE_THRESHOLD:-0.86}
+      TOPIC_TIME_WINDOW_DAYS: ${TOPIC_TIME_WINDOW_DAYS:-7}
+      DEDUP_NEAR_THRESHOLD: ${DEDUP_NEAR_THRESHOLD:-0.92}
+      NEWSLETTER_MIN_BULLETS: ${NEWSLETTER_MIN_BULLETS:-5}
+      NEWSLETTER_MAX_BULLETS: ${NEWSLETTER_MAX_BULLETS:-10}
+      MMR_LAMBDA: ${MMR_LAMBDA:-0.8}
+      MMR_MAX_CANDIDATES: ${MMR_MAX_CANDIDATES:-120}
+      USER_EMBEDDING_DECAY_HOURS: ${USER_EMBEDDING_DECAY_HOURS:-72}
+    ports:
+      - "${AIRFLOW_PORT:-8080}:8080"
+    depends_on:
+      - postgres
+    volumes:
+      - ./infra/airflow/dags:/opt/airflow/dags
+      - ./:/opt/project
+    command: airflow standalone
+
+volumes:
+  pgdata:
